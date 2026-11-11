@@ -9,3 +9,6 @@ playwright-report/
 *.log
 .DS_Store
 tmp/
+
+# Spring Boot / Maven
+backend/target/
