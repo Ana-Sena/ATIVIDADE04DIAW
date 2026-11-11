@@ -1,12 +1,31 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
-const data = JSON.parse(readFileSync('src/data/pokedex-data.json', 'utf8'));
+const data = JSON.parse(
+  readFileSync('backend/src/main/resources/seed/pokedex.json', 'utf8'),
+);
 const imageFallback = readFileSync('public/images/pokemon-fallback.svg');
 test.beforeEach(async ({ page }) => {
   // A interface deve funcionar mesmo se a hospedagem de imagens estiver indisponível.
   await page.route('https://raw.githubusercontent.com/**', (route) =>
     route.fulfill({ status: 404, body: '' }),
   );
+  await page.route('**/api/**', async (route) => {
+    const pathname = new URL(route.request().url()).pathname;
+    const body =
+      pathname === '/api/pokemons'
+        ? data.pokemon
+        : pathname === '/api/types'
+          ? data.types
+          : pathname === '/api/trainers'
+            ? data.trainers
+            : data.pokemon.find(
+                (p) => p.id === Number(pathname.split('/').at(-1)),
+              );
+    await route.fulfill({
+      status: body ? 200 : 404,
+      json: body || { message: 'Pokémon não encontrado.' },
+    });
+  });
   await page.goto('/');
 });
 

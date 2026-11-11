@@ -9,13 +9,10 @@ import {
   flipPokemon,
 } from '../src/utils/pokemonSelectors.js';
 const data = JSON.parse(
-  readFileSync(new URL('../src/data/pokedex-data.json', import.meta.url)),
+  readFileSync(
+    new URL('../backend/src/main/resources/seed/pokedex.json', import.meta.url),
+  ),
 );
-test('cópia textual preserva o JSON original', () =>
-  assert.deepEqual(
-    readFileSync('pokedex-data.json'),
-    readFileSync('src/data/pokedex-data.json'),
-  ));
 test('busca parcial e ID exato, combinados com tipo secundário', () => {
   for (const query of ['25', '025', '#025'])
     assert.deepEqual(
