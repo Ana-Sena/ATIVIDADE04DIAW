@@ -10,6 +10,26 @@ Continuação da Atividade 03: React + Vite consome uma API REST Spring Boot e p
 - `scripts/convert-sql.mjs`: conversor reproduzível SQL → documentos.
 - `compose.yaml`: MongoDB local com volume persistente e backend opcional.
 
+### Organização das pastas
+
+```text
+pokedex/
+├── backend/                 # API Spring Boot e carga MongoDB gerada
+├── database/
+│   └── seed/                # Script SQL original fornecido
+├── docs/
+│   ├── archive/atividade-03/ # Prompt histórico da atividade anterior
+│   └── images/              # Capturas de tela da interface
+├── e2e/                     # Testes de navegador
+├── scripts/                 # Conversão dos dados e utilitários
+├── src/                     # Frontend React
+├── tests/                   # Testes unitários do frontend e conversor
+├── compose.yaml
+└── README.md
+```
+
+O material em `docs/archive/` é histórico e descreve a Atividade 03. Para a versão atual, siga este README.
+
 ## Execução rápida (Docker + Node.js)
 
 Requisitos: Node.js 22.12+ e Docker Desktop em execução. Na raiz:
