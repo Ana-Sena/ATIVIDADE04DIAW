@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "test": "node --test tests/*.test.js",
     "test:e2e": "playwright test",
-    "format": "prettier --write src tests e2e *.js index.html package.json"
+    "format": "prettier --write src tests e2e *.js index.html package.json",
+    "seed:generate": "node scripts/convert-sql.mjs",
+    "test:api": "node scripts/test-api.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
