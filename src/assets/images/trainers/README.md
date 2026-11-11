@@ -1,0 +1,1 @@
+Adicione aqui retratos com o ID original do treinador como nome (por exemplo, 1.png para Ash). Formatos: png, jpg, jpeg, webp ou svg. Registre a fonte e a licença no README principal. Sem imagem, o aplicativo usa o avatar provisório local.

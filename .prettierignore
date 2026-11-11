@@ -1,0 +1,9 @@
+node_modules
+.npm-cache
+dist
+tmp
+test-results
+playwright-report
+package-lock.json
+src/data/pokedex-data.json
+*.md

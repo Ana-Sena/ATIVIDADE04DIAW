@@ -1,0 +1,326 @@
+.flip-card {
+  --accent: #78828e;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  width: 100%;
+  height: 408px;
+  text-align: center;
+  perspective: 1100px;
+  border-radius: 16px;
+  transition: transform 0.2s;
+}
+.flip-card:hover {
+  transform: translateY(-4px);
+}
+.card-rotator {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s;
+}
+.is-flipped .card-rotator {
+  transform: rotateY(180deg);
+}
+.card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 19px 20px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--accent) 18%, var(--surface)),
+    var(--surface) 48%,
+    color-mix(in srgb, var(--accent) 12%, var(--surface))
+  );
+  border: 8px solid var(--accent);
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 2px #eee5d5,
+    inset 0 0 0 2px color-mix(in srgb, var(--accent) 30%, var(--surface)),
+    0 5px 16px color-mix(in srgb, var(--accent) 22%, transparent);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+.card-number {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font:
+    700 12px ui-monospace,
+    monospace;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+.card-number > span {
+  color: var(--accent);
+  font-size: 17px;
+}
+.artwork-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 189px;
+  position: relative;
+  margin: 5px 0 6px;
+}
+.artwork-stage:before {
+  content: '';
+  position: absolute;
+  inset: 4px 0;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 20% 15%, #ffffff90, transparent 55%),
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--accent) 30%, var(--surface)),
+      color-mix(in srgb, var(--accent) 10%, var(--surface))
+    );
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--surface));
+}
+
+.card-number > .element-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 25%, var(--surface));
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.card-number > .element-mark.has-icon {
+  background: transparent;
+}
+
+.element-mark img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.flip-card:hover .card-face {
+  box-shadow:
+    0 0 0 2px #eee5d5,
+    inset 0 0 0 2px color-mix(in srgb, var(--accent) 30%, var(--surface)),
+    0 8px 24px color-mix(in srgb, var(--accent) 38%, transparent);
+}
+.artwork-stage img {
+  width: 100%;
+  height: 178px;
+  object-fit: contain;
+  position: relative;
+  filter: drop-shadow(0 8px 5px #17213714);
+}
+.card-name {
+  font-size: 22px;
+  letter-spacing: -0.6px;
+  line-height: 1.3;
+  margin: 0 0 9px;
+  overflow-wrap: anywhere;
+}
+.types {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.type {
+  display: inline-block;
+  background: #e5e8ed;
+  color: #344155;
+  border-radius: 5px;
+  padding: 4px 9px;
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 750;
+}
+.type-grass,
+.type-bug {
+  background: #e0f0d6;
+  color: #355521;
+}
+.type-fire {
+  background: #ffe4d7;
+  color: #903c16;
+}
+.type-water,
+.type-ice {
+  background: #dceefa;
+  color: #24577b;
+}
+.type-poison,
+.type-ghost {
+  background: #eddef6;
+  color: #70408b;
+}
+.type-electric {
+  background: #fff1bc;
+  color: #745408;
+}
+.type-ground,
+.type-rock {
+  background: #eee5d2;
+  color: #685122;
+}
+.type-flying,
+.type-dragon {
+  background: #e4e5fa;
+  color: #4a4c86;
+}
+.type-psychic,
+.type-fairy {
+  background: #fce0eb;
+  color: #943758;
+}
+.type-fighting {
+  background: #f6dcd8;
+  color: #873629;
+}
+.type-dark,
+.type-steel {
+  background: #dee2e9;
+  color: #394658;
+}
+.card-hint {
+  font-size: 10px;
+  color: var(--muted);
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 14px;
+  letter-spacing: 0.3px;
+}
+
+.pokemon-card .card-hint {
+  width: calc(100% + 40px);
+  margin-inline: -20px;
+  margin-bottom: -19px;
+  padding: 12px;
+  min-height: 44px;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--accent) 28%, var(--surface));
+  border-top: 1px solid color-mix(in srgb, var(--accent) 40%, var(--surface));
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 650;
+}
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  width: 100%;
+  margin-top: 19px;
+}
+.stat-heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  gap: 8px;
+  margin-bottom: 4px;
+  text-align: left;
+}
+.stat-heading strong {
+  font-variant-numeric: tabular-nums;
+}
+.stat-track {
+  display: block;
+  height: 6px;
+  background: var(--soft);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.stat-track > span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 6px;
+}
+.card-back .card-name {
+  font-size: 20px;
+  margin-top: 3px;
+}
+.card-back .card-hint {
+  padding-top: 8px;
+}
+.accent-grass {
+  --accent: #3c9a23;
+}
+.accent-fire {
+  --accent: #e9262c;
+}
+.accent-water {
+  --accent: #2980ef;
+}
+.accent-poison {
+  --accent: #8f3dc9;
+}
+.accent-electric {
+  --accent: #f6b900;
+}
+.accent-ground {
+  --accent: #904e23;
+}
+.accent-flying {
+  --accent: #80b6f3;
+}
+.accent-psychic {
+  --accent: #ef4079;
+}
+.accent-fighting {
+  --accent: #ff7f00;
+}
+.accent-steel {
+  --accent: #599cb1;
+}
+.accent-normal {
+  --accent: #9f9f9d;
+}
+.accent-bug {
+  --accent: #879e12;
+}
+.accent-ice {
+  --accent: #3ad9ff;
+}
+.accent-ghost {
+  --accent: #6f4170;
+}
+.accent-rock {
+  --accent: #afa783;
+}
+.accent-dragon {
+  --accent: #4b64db;
+}
+.accent-fairy {
+  --accent: #ec6ff3;
+}
+.accent-dark {
+  --accent: #50413a;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-rotator,
+  .is-flipped .card-rotator {
+    transform: none;
+  }
+  .card-face {
+    transform: none;
+  }
+  .card-face[aria-hidden='true'] {
+    visibility: hidden;
+  }
+}
