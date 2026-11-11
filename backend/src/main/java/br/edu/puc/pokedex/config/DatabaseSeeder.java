@@ -24,7 +24,7 @@ public class DatabaseSeeder implements CommandLineRunner {
    for (var type:seed.types()) insertIfMissing(type.id(),type,PokemonType.class);
    for (var pokemon:seed.pokemon()) insertIfMissing(pokemon.id(),pokemon,Pokemon.class);
    for (var trainer:seed.trainers()) insertIfMissing(trainer.id(),trainer,Trainer.class);
-   mongo.insert(new Document("_id","sql-v1").append("source","Script_Pokedex.sql"),"seed_history");
+   mongo.insert(new Document("_id","sql-v1").append("source","database/seed/Script_Pokedex.sql"),"seed_history");
   }
  }
  private void insertIfMissing(Integer id,Object value,Class<?> model) {

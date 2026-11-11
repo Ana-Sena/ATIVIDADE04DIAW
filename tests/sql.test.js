@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { convertSql } from '../scripts/convert-sql.mjs';
-const sql = readFileSync('Script_Pokedex.sql', 'utf8');
+const sql = readFileSync('database/seed/Script_Pokedex.sql', 'utf8');
 const data = convertSql(sql);
 test('carga MongoDB é reproduzível exclusivamente a partir do SQL fornecido', () => {
   assert.deepEqual(

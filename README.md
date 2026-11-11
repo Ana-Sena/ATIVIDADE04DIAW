@@ -6,7 +6,7 @@ Continuação da Atividade 03: React + Vite consome uma API REST Spring Boot e p
 
 - `src/`: frontend React existente.
 - `backend/`: Spring Boot 3.5.7, Spring Web, Validation e Spring Data MongoDB; pacotes controller, service, repository, model e config.
-- `Script_Pokedex.sql`: fonte original fornecida pelo professor.
+- `database/seed/Script_Pokedex.sql`: fonte original fornecida pelo professor.
 - `scripts/convert-sql.mjs`: conversor reproduzível SQL → documentos.
 - `compose.yaml`: MongoDB local com volume persistente e backend opcional.
 
@@ -60,7 +60,7 @@ Configurações opcionais do backend: `PORT` (8080), `CORS_ORIGINS` (http://loca
 ## Origem e modelagem dos dados
 
 ```text
-Script_Pokedex.sql → conversor Node.js → carga inicial Spring Boot → MongoDB → API REST → React
+database/seed/Script_Pokedex.sql → conversor Node.js → carga inicial Spring Boot → MongoDB → API REST → React
 ```
 
 O frontend não importa JSON de dados nem usa uma cópia local se a API falhar. `backend/src/main/resources/seed/pokedex.json` é somente uma carga inicial gerada do SQL, empacotada com o backend. Para regenerá-la após alterar o SQL:

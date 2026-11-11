@@ -64,7 +64,7 @@ if (
 ) {
   const root = fileURLToPath(new URL('../', import.meta.url));
   const data = convertSql(
-    await readFile(path.join(root, 'Script_Pokedex.sql'), 'utf8'),
+    await readFile(path.join(root, 'database/seed/Script_Pokedex.sql'), 'utf8'),
   );
   const target = path.join(
     root,
