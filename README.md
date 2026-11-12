@@ -152,6 +152,33 @@ npm run test:api
 
 Esse teste cria um Pokémon temporário com ID livre, consulta, edita e exclui somente esse registro. Execute contra um banco de desenvolvimento.
 
+## Problemas de execução
+
+### Porta 8080 ocupada ao iniciar o Docker
+
+Se o build terminar, mas o contêiner falhar com `ports are not available` ou `bind`, confira se o backend está rodando por Java ou Maven em outro terminal. Encerre essa execução com **Ctrl+C** e tente novamente:
+
+```powershell
+docker compose up -d --build
+docker compose ps
+```
+
+O backend deve ser executado por apenas uma das opções: Docker ou Java/Maven. No PowerShell, é possível identificar quem ocupa a porta sem encerrar processos automaticamente:
+
+```powershell
+Get-NetTCPConnection -LocalPort 8080 -State Listen | Select-Object LocalPort, OwningProcess
+```
+
+### Vite não reconhecido ou erro EPERM no esbuild
+
+Se `npm run build` informar que `vite` não é reconhecido, as dependências de desenvolvimento podem estar ausentes ou a instalação ter sido interrompida. Antes de reinstalar, encerre o frontend com **Ctrl+C** em todos os terminais deste projeto. Um Vite em execução pode manter `esbuild.exe` bloqueado no Windows e causar `EPERM: operation not permitted, unlink`. Depois execute:
+
+```powershell
+npm ci --include=dev
+npm run build
+npm run dev
+```
+
 ## Entrega
 
 Entregar o link deste repositório no Canvas pelos dois integrantes da dupla. O desenvolvimento deve seguir a orientação de Pair Programming da atividade. Configure e execute a aplicação com MongoDB local ou Atlas antes da apresentação.
